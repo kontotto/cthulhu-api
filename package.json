@@ -1,0 +1,27 @@
+{
+  "name": "cthulhu-api",
+  "version": "1.0.0",
+  "description": "for cthulhu",
+  "main": "server.js",
+  "scripts": {
+    "test": "node ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kontotto/cthulhu-api.git"
+  },
+  "keywords": [
+    "api"
+  ],
+  "author": "Shuta Kondo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kontotto/cthulhu-api/issues"
+  },
+  "homepage": "https://github.com/kontotto/cthulhu-api#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "mongoose": "^4.6.6"
+  }
+}
