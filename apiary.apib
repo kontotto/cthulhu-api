@@ -3,78 +3,69 @@ HOST: http://polls.apiblueprint.org/
 
 # cthulhu
 
-Polls is a simple API allowing consumers to view polls and vote in them.
+クトゥルフ神話に使うキャラの操作を行うAPI
 
-## Questions Collection [/questions]
+## 特定のユーザーの操作 [/users/{id}]
++ Parameters
+    + id (number) ... メンバーのID
 
-### List All Questions [GET]
-
+### user_show [GET]
 + Response 200 (application/json)
 
-        [
-            {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 2048
-                    }, {
-                        "choice": "Python",
-                        "votes": 1024
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 512
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 256
-                    }
-                ]
-            }
-        ]
+        {
+            "name" : "nyaruko",
+            "list" : [
+                {
+                    "id": "skill",
+                    "parameter": 15
+                }
+            ]
+        }
 
-### Create a New Question [POST]
-
-You may create your own question using this action. It takes a JSON
-object containing a question and a collection of answers in the
-form of choices.
-
+### user_update [PUT]
 + Request (application/json)
 
         {
-            "question": "Favourite programming language?",
-            "choices": [
-                "Swift",
-                "Python",
-                "Objective-C",
-                "Ruby"
+            "name" : "nyaruko",
+            "list" : [
+                {
+                    "id": "skill",
+                    "parameter": 15
+                }
+            ]
+        }
+
++ Response 200 (application/json)
+
+        {
+            "published_at": "2015-08-05T08:40:51.620Z"
+        }
+
+### user_delete [DELETE]
++ Response 200 (application/json)
+
+        {
+            "msg" : "success"
+        }
+        
+## ユーザーの作成 [/users]
+
+### user_create [POST]
++ Request (application/json)
+
+        {
+            "name" : "nyaruko",
+            "list" : [
+                {
+                    "id": "skill",
+                    "parameter": 15
+                }
             ]
         }
 
 + Response 201 (application/json)
-
-    + Headers
-
-            Location: /questions/2
-
-    + Body
-
-            {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 0
-                    }, {
-                        "choice": "Python",
-                        "votes": 0
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 0
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 0
-                    }
-                ]
-            }
+        
+        {
+            "id" : 15
+            "published_at": "2015-08-05T08:40:51.620Z"
+        }
