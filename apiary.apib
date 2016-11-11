@@ -48,6 +48,10 @@ HOST: http://polls.apiblueprint.org/
             "msg" : "success"
         }
 
+## ユーザースキーマの取得 [/users/schema]
+### user_schema [GET]
++ Response 200 (application/json)
+    + Attributes (UserWithoutID)
 
 ## 全スキルの取得 [/skills]
 
@@ -77,25 +81,59 @@ HOST: http://polls.apiblueprint.org/
 
 ### UserWithoutID
 + name: hoge (string) - ユーザーの名前
++ job: genius (string) - ユーザの職業
++ desc: 天才 (string) - ユーザの備考
++ str: 13 (number) - ユーザの力
++ con: 13 (number) - ユーザの耐久力
++ pow: 13 (number) - ユーザの精神力
++ dex: 13 (number) - ユーザの素早さ
++ app: 13 (number) - ユーザの見た目
++ siz: 13 (number) - ユーザのサイズ
++ int: 13 (number) - ユーザの知性
++ edu: 13 (number) - ユーザの教養
++ hp: 13 (number) - ユーザのHP
++ mp: 13 (number) - ユーザのNP
++ san: 13 (number) - ユーザのSAN値
++ idea: 13 (number) - ユーザのひらめき
++ lucky: 13 (number) - ユーザの幸運
++ wisdom: 13 (number) - ユーザの知識
++ dodge: 13 (number) - ユーザの回避
 + skills (array[UserSkill]) - 取得スキルの一覧
 
 ### User
-+ id: 15 (number) - ユーザーのID
++ _id: 15 (number) - ユーザーのID
 + name: hoge (string) - ユーザーの名前
++ job: genius (string) - ユーザの職業
++ desc: 天才 (string) - ユーザの備考
++ str: 13 (number) - ユーザの力
++ con: 13 (number) - ユーザの耐久力
++ pow: 13 (number) - ユーザの精神力
++ dex: 13 (number) - ユーザの素早さ
++ app: 13 (number) - ユーザの見た目
++ siz: 13 (number) - ユーザのサイズ
++ int: 13 (number) - ユーザの知性
++ edu: 13 (number) - ユーザの教養
++ hp: 13 (number) - ユーザのHP
++ mp: 13 (number) - ユーザのNP
++ san: 13 (number) - ユーザのSAN値
++ idea: 13 (number) - ユーザのひらめき
++ lucky: 13 (number) - ユーザの幸運
++ wisdom: 13 (number) - ユーザの知識
++ dodge: 13 (number) - ユーザの回避
 + skills (array[UserSkill]) - 取得スキルの一覧
 
 ### UserSkill
-+ id: 0 (number) - スキルのID
++ _id: 0 (number) - スキルのID
 + name: キック (string) - スキルの名前
 + ini: 15 (number) - スキルの初期値
 + current: 35 (number) - スキルの現在値
 
 ### SkillGroup
-+ id: 0 (number) - グループのID
++ _id: 0 (number) - グループのID
 + name: 戦闘技能 (string) - グループの名前
 + skills (array[Skill]) - スキルの一覧
 
 ### Skill
-+ id: 0 (number) - スキルのID
++ _id: 0 (number) - スキルのID
 + name: キック (string) - スキルの名前
 + ini: 15 (number) - スキルの初期値
