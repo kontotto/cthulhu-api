@@ -2,38 +2,38 @@ FORMAT: 1A
 HOST: http://polls.apiblueprint.org/
 
 # cthulhu
-
 クトゥルフ神話に使うキャラの操作を行うAPI
 
-## 特定のユーザーの操作 [/users/{id}]
+
+## 全ユーザーへの操作 [/users]
+
+### users_get [GET]
++ Response 200 (application/json)
+    + Attributes
+        + users (array[User])
+
+### user_create [POST]
++ Request (application/json)
+    + Attributes (UserWithoutID)
+
++ Response 201 (application/json)
+        
+        {
+            "id" : 15
+            "published_at": "2015-08-05T08:40:51.620Z"
+        }
+
+## 特定ユーザーへの操作 [/users/{id}]
 + Parameters
     + id (number) ... メンバーのID
 
-### user_show [GET]
+### user_get [GET]
 + Response 200 (application/json)
-
-        {
-            "name" : "nyaruko",
-            "list" : [
-                {
-                    "id": "skill",
-                    "parameter": 15
-                }
-            ]
-        }
+    + Attributes (User)
 
 ### user_update [PUT]
 + Request (application/json)
-
-        {
-            "name" : "nyaruko",
-            "list" : [
-                {
-                    "id": "skill",
-                    "parameter": 15
-                }
-            ]
-        }
+    + Attributes (User)
 
 + Response 200 (application/json)
 
@@ -47,25 +47,55 @@ HOST: http://polls.apiblueprint.org/
         {
             "msg" : "success"
         }
-        
-## ユーザーの作成 [/users]
 
-### user_create [POST]
-+ Request (application/json)
 
-        {
-            "name" : "nyaruko",
-            "list" : [
-                {
-                    "id": "skill",
-                    "parameter": 15
-                }
-            ]
-        }
+## 全スキルの取得 [/skills]
 
-+ Response 201 (application/json)
-        
-        {
-            "id" : 15
-            "published_at": "2015-08-05T08:40:51.620Z"
-        }
+### all_skills_get [GET]
++ Response 200 (application/json)
+    + Attributes
+        + groups (array[SkillGroup]) - グループの一覧
+
+## 特定スキル群の取得 [/skills/{groupId}]
++ Parameters
+    + groupId (Number, `0`) ... スキル群のID
+
+### skills_get [GET]
+
++ Response 200 (application/json)
+    + Attributes (SkillGroup)
+
+## 特定スキルの取得 [/skills/{skillId}]
++ Parameters
+    + skillId (Number, `0`) ... スキルのID
+
+### skill_get [GET]
++ Response 200 (application/json)
+    + Attributes (Skill)
+
+## Data Structure
+
+### UserWithoutID
++ name: hoge (string) - ユーザーの名前
++ skills (array[UserSkill]) - 取得スキルの一覧
+
+### User
++ id: 15 (number) - ユーザーのID
++ name: hoge (string) - ユーザーの名前
++ skills (array[UserSkill]) - 取得スキルの一覧
+
+### UserSkill
++ id: 0 (number) - スキルのID
++ name: キック (string) - スキルの名前
++ ini: 15 (number) - スキルの初期値
++ current: 35 (number) - スキルの現在値
+
+### SkillGroup
++ id: 0 (number) - グループのID
++ name: 戦闘技能 (string) - グループの名前
++ skills (array[Skill]) - スキルの一覧
+
+### Skill
++ id: 0 (number) - スキルのID
++ name: キック (string) - スキルの名前
++ ini: 15 (number) - スキルの初期値
